@@ -1,0 +1,22 @@
+# Dockerfile for development and test environments.
+
+FROM ruby:2.7-alpine
+
+ENV PACKAGES="build-base bash git nodejs postgresql-dev tzdata yarn" \
+    LANG="ja_JP.UTF-8" \
+    TZ="Asia/Tokyo"
+
+WORKDIR /app
+
+COPY Gemfile .
+COPY Gemfile.lock .
+
+# 必要なライブラリをインストールした後、不要なファイルを削除する
+RUN apk update && \
+    apk upgrade && \
+    apk add --update --no-cache $PACKAGES
+RUN bundle config set without production && \
+    bundle install --jobs=4
+RUN yarn install
+
+COPY . .
