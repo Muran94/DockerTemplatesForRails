@@ -1,7 +1,7 @@
 #!/bin/bash
 
-printf '\033[36m%s\033[m\n' 'docker-compose run web rails new . --force --no-deps --database=postgresql'
-docker-compose run web rails new . --force --no-deps --database=postgresql
+printf '\033[36m%s\033[m\n' 'docker-compose run web rails new . --force --no-deps --database=mysql'
+docker-compose run web rails new . --force --no-deps --database=mysql
 wait
 
 printf '\033[36m%s\033[m\n' 'Copying database.yml.'

@@ -10,7 +10,7 @@ WORKDIR /app
 COPY Gemfile* ./
 
 RUN apk update && apk upgrade && \
-    apk add --update --no-cache build-base bash nodejs postgresql-dev tzdata yarn
+    apk add --update --no-cache build-base bash mysql-dev nodejs tzdata yarn
 
 RUN bundle config set without production && \
     bundle install --jobs=8
