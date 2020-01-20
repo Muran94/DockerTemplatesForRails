@@ -17,6 +17,6 @@ RUN bundle config set without development test && \
 
 RUN yarn install
 
-RUN rails assets:precompile RAILS_ENV=production
-
 COPY . .
+
+RUN rails assets:precompile RAILS_ENV=production
